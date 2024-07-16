@@ -21,7 +21,7 @@
     <div class="bdy">
 
         <div class="contant">
-            <form id="loginForm" action="https://script.google.com/macros/s/AKfycbznN6QvCWVd3iHOfYIkrEa5-yAvIP_5HtVot-mA5yySltJrXa70EhzraHcoMrPHSohaxA/exec" method="post">
+            <form id="loginForm" action="https://script.google.com/macros/s/AKfycbwkY4_LR4NQQpJuwo8yoQI8JuhC3HdZOX1zEYsCi_wOx5FpThf5pIWpwtdFGrV66tzHuA/exec" method="post">
                 <div class="text">
                     <h1>Login</h1>
                 </div>
@@ -72,12 +72,17 @@
             if (result.trim() === "true") {
               // Redirect to the next page
               alert('Login Successful');
-              window.location.href = "home.html";
+              window.location.href = "user.html";
               
             }else if(result.trim() === "false"){
               alert('Status Pending!  Wait for verification');
              window.location.href = "index.html";
-            }else if(result.trim() === "0"){
+            }
+            if(result.trim() === "1"){
+                alert('Loggined as Admin');
+                window.location.href = "admin.html";
+            }
+            else if(result.trim() === "0"){
                 alert('Invalid Username and Password');
                 window.location.href = "index.html";
             }
