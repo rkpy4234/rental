@@ -22,7 +22,7 @@
 
         <div class="contant">
             <form id="loginForm"
-                action="https://script.google.com/macros/s/AKfycbzsVbwNtrenMlxlcbaXriptanirO7ZuZHhD-7-JywGB2yHs31NIBnsOodA5h2qIixw_LA/exec"
+                action="https://script.google.com/macros/s/AKfycbw4YbOdMEm4iS8UbcfZ6N4fbvkZPhqgFHSgs3MGwcvxR_DKxEcwq1kNFYz9_V6VI1dNpw/exec"
                 method="post">
                 <div class="text">
                     <h1>Login</h1>
@@ -74,7 +74,12 @@
                         alert('Login Successful');
                         localStorage.setItem('fullName', result.name);
                         window.location.href = "user.html";
-                    } else if (result.status === 'pending') {
+                    } else if(result.status === 'usered'){
+                        alert('Welcome Puja');
+                        localStorage.setItem('fullName', result.name);
+                        window.location.href = "puja.html";
+                    }
+                    else if (result.status === 'pending') {
                         alert('Status Pending! Wait for verification');
                         window.location.href = "index.html";
                     } else if (result.status === 'admin') {
