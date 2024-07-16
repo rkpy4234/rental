@@ -21,7 +21,9 @@
     <div class="bdy">
 
         <div class="contant">
-            <form id="loginForm" action="https://script.google.com/macros/s/AKfycbwkY4_LR4NQQpJuwo8yoQI8JuhC3HdZOX1zEYsCi_wOx5FpThf5pIWpwtdFGrV66tzHuA/exec" method="post">
+            <form id="loginForm"
+                action="https://script.google.com/macros/s/AKfycbzsVbwNtrenMlxlcbaXriptanirO7ZuZHhD-7-JywGB2yHs31NIBnsOodA5h2qIixw_LA/exec"
+                method="post">
                 <div class="text">
                     <h1>Login</h1>
                 </div>
@@ -30,7 +32,7 @@
                         class="bi bi-person-fill" viewBox="0 0 16 16">
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
                     </svg>
-                    <input type="text"  id="username" name="username"  placeholder="Username">
+                    <input type="text" id="username" name="username" placeholder="Username">
                     <br><br>
                 </div>
                 <div class="fielder">
@@ -45,54 +47,48 @@
                 <div class="forgot-pass"><a href="#">Forgot Password?</a></div>
                 <button type="submit">Login</button>
             </form>
-                <div class="signup">Not a member?
-                    <a href="Sign_Up.html">Sign-Up</a>
-                </div>
-            
-            
+            <div class="signup">Not a member?
+                <a href="Sign_Up.html">Sign-Up</a>
+            </div>
+
+
         </div>
     </div>
     <div id="result"></div>
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-          e.preventDefault();
-          var form = e.target;
-    
-          var formData = new FormData(form);
-          fetch(form.action, {
-            method: 'POST',
-            body: formData,
-          })
-          .then(response => response.text())
-          .then(result => {
-            document.getElementById('result').textContent = result;
-            // Assuming result contains some indication of success, e.g., "Success"
-            if (result.trim() === "true") {
-              // Redirect to the next page
-              alert('Login Successful');
-              window.location.href = "user.html";
-              
-            }else if(result.trim() === "false"){
-              alert('Status Pending!  Wait for verification');
-             window.location.href = "index.html";
-            }
-            if(result.trim() === "1"){
-                alert('Loggined as Admin');
-                window.location.href = "admin.html";
-            }
-            else if(result.trim() === "0"){
-                alert('Invalid Username and Password');
-                window.location.href = "index.html";
-            }
-            // If you want to show an alert:
-            
-          })
-          // .catch(error => console.error('Error:', error));
-          
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var form = e.target;
+
+            var formData = new FormData(form);
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(result => {
+                    document.getElementById('result').textContent = JSON.stringify(result);
+                    if (result.status === 'user') {
+                        alert('Login Successful');
+                        localStorage.setItem('fullName', result.name);
+                        window.location.href = "user.html";
+                    } else if (result.status === 'pending') {
+                        alert('Status Pending! Wait for verification');
+                        window.location.href = "index.html";
+                    } else if (result.status === 'admin') {
+                        alert('Logged in as Admin');
+                        localStorage.setItem('fullName', result.name);
+                        window.location.href = "admin.html";
+                    } else {
+                        alert('Invalid Username and Password');
+                        window.location.href = "index.html";
+                    }
+                })
+                .catch(error => console.error('Error:', error));
         });
-      </script>
+    </script>
 
 </body>
 
