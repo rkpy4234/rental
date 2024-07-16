@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .bdy {
+        min-height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #dde1e7;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .bdy_register {
+
+        width: 20%;
+        background-color: #dde1e7;
+        padding: 20px 40px;
+        border: none;
+        border-radius: 15px;
+        box-shadow: -3px -3px 7px #ffffff73,
+            2px 2px 5px rgba(94, 101, 121, 0.288);
+
+    }
+
+    .bdy_register h1 {
+        text-align: center;
+        color: #3498db;
+        margin-bottom: 15px;
+    }
+
+    .bdy_register input {
+        width: 100%;
+        min-height: 30px;
+        padding-left: 10px;
+        outline: none;
+        color: #595959;
+        font-size: 15px;
+        margin: 8px 0 13px 0;
+        background: #dde1e7;
+        border: none;
+        border-radius: 5px;
+        box-shadow: -2px -2px 3px #ffffff73,
+            2px 2px 3px rgba(94, 101, 121, 0.288);
+    }
+
+    .bdy_register input:focus {
+        color: #3498db;
+        box-shadow: inset 2px 2px 5px #babecc,
+            inset -5px -5px 10px #ffffff73;
+    }
+
+    .bdy_register label {
+        font-size: 18px;
+        color: #595959;
+        font-weight: 500;
+
+    }
+
+    .bdy_register .btn {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .bdy_register .btn input {
+        width: 100%;
+        padding: 5px 0;
+        border-radius: 20px;
+        color: #595959;
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .bdy_register .btn input:hover {
+        color: #3498db;
+    }
+
+    .bdy_register .btn input:focus {
+        color: #3498db;
+        box-shadow: inset 2px 2px 5px #babecc,
+            inset -5px -5px 10px #ffffff73;
+    }
+
+
+    .login{
+    font-size: 16px;
+    color: #595959;
+    margin: 10px 0;
+    }
+    .login a{
+    color: #3498db;
+    text-decoration: none;
+
+    }
+    .login a:hover{
+    text-decoration: underline;
+    } 
+
+
+
+    @media(max-width:1050px) {
+        .bdy_register {
+            width: 40%;
+        }
+    }
+
+    @media(max-width:500px) {
+        .bdy_register {
+            width: 70%;
+        }
+    }
+
+</style>
+
+<body>
+    <div class="bdy">
+        <div class="bdy_register">
+            <form
+                action="https://script.google.com/macros/s/AKfycbxqIV-CGecGr91jPwuMjZNwij7FPIFB0QX9HqUlnbdrr9oCQxs2RW5sHphCBAGe3kvQmg/exec"
+                method="post" name="SignUp_form">
+
+                <h1>Sign_Up</h1>
+                <label>First Name :</label><br>
+                <input type="text" name="FullName" placeholder="Enter Full Name*" required><br>
+                <label>Last Name :</label><br>
+                <input type="text" name="LastlName" placeholder="Enter Last Name*"><br>
+                <label>E-mail :</label><br>
+                <input type="email" name="E_mail" placeholder="Enter E_mail"><br>
+                <label>Username :</label><br>
+                <input type="email" name="username" placeholder="Enter username*"><br>
+                <label>Password :</label><br>
+                <input type="password" name="password" placeholder="Enter Password*" required><br>
+                <label>Conform Password :</label><br>
+                <input type="password" name="" placeholder="Enter Conform Password*"><br>
+                <div class="btn">
+                    <input type="submit" value="Send" id="submit">
+                </div>
+                <div class="login">I remenbered?
+                    <a href="index.html">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxqIV-CGecGr91jPwuMjZNwij7FPIFB0QX9HqUlnbdrr9oCQxs2RW5sHphCBAGe3kvQmg/exec';
+        const form = document.forms['SignUp_form'];
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    if (response.ok) {
+                        alert("Successfully Signed_Up");
+                        window.location.reload();
+                    } else {
+                        return Promise.reject(new Error('Sign_Up Failed'));
+                    }
+                })
+                .catch(error => console.error('Error!', error.message));
+        });
+    </script>
+</body>
+
+</html>
