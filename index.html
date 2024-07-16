@@ -21,7 +21,7 @@
     <div class="bdy">
 
         <div class="contant">
-            <form id="loginForm" action="https://script.google.com/macros/s/AKfycbzpVbX0v31WYOo3QmuycB0LTniTfTLewyOx_50L2-az2gX71_8SEvxrg-z34LKo40HlQw/exec" method="post">
+            <form id="loginForm" action="https://script.google.com/macros/s/AKfycbznN6QvCWVd3iHOfYIkrEa5-yAvIP_5HtVot-mA5yySltJrXa70EhzraHcoMrPHSohaxA/exec" method="post">
                 <div class="text">
                     <h1>Login</h1>
                 </div>
@@ -75,8 +75,11 @@
               window.location.href = "home.html";
               
             }else if(result.trim() === "false"){
-              alert('Invalid username or password');
+              alert('Status Pending!  Wait for verification');
              window.location.href = "index.html";
+            }else if(result.trim() === "0"){
+                alert('Invalid Username and Password');
+                window.location.href = "index.html";
             }
             // If you want to show an alert:
             
