@@ -7,42 +7,48 @@
   <title>Document</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="assets/CSS/recordpuja.css">
+  <link rel="stylesheet" href="assets/CSS/paidpuja.css">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 <body>
   <header>
     <nav>
-      <div class="nav-bar">
-        <span class="logo"><a href="#">Welcome, <span id="fullName"></span></a></span>
-        <div class="menu">
-            <ul class="nav-links">
-                <li><a href="puja.html">Home</a></li>
-                <li><a href="paidpuja.html">Paid</a></li>
-                <li><a href="recordpuja.html">Record</a></li>
-                <li><a href="index.html">Log_Out</a></li>
-              </ul>
+        <div class="nav-logo">
+            <a style="text-decoration: none;" href="index.html">
+                <h1>Welcome, <span id="fullName"></span></h1>
+            </a>
         </div>
-          <!-- <i class='bx bx-menu sidebarOpen'></i> -->
         <div class="searchBox">
-          <i class='bx bx-menu open'></i> 
-          <i class='bx bx-x close'></i>
+            <i class='bx bx-menu open'></i>
+            <i class='bx bx-x close'></i>
         </div>
-      </div>
+        <ul class="header-main">
+            <li><a href="puja.html">Home</a></li>
+            <li><a href="paidpuja.html">Paid</a></li>
+            <li><a href="recordpuja.html">Record</a></li>
+            <li><a href="index.html">Log_Out</a></li>
+        </ul>
     </nav>
-  </header>
+    <!-- light and dark mode -->
+    <div class="darkLight-searchBox">
+        <div class="dark-light">
+            <i class='bx bx-moon moon'></i>
+            <i class='bx bx-sun sun'></i>
+        </div>
+    </div>
+</header>
 
 <section>
-    <div class="recordpuja">
+    <div class="paidpuja">
         <div class="container">
             <h3>Paid</h3>
-            <table class="table table-striped table-hover">
+            <table class="table table-hover">
                 <thead>
-                    <tr id="table-header">
+                    <tr id="table-header" class="table-header">
                         <!-- Table headers will be inserted here -->
                     </tr>
                 </thead>
-                <tbody id="table-body">
+                <tbody id="table-body" class="table-body">
                     <!-- Table data will be inserted here -->
                 </tbody>
                 <tfoot id="table-foot">
@@ -55,37 +61,7 @@
 
 
 
-  <script src="./assets/JS/user.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        fetch('https://script.google.com/macros/s/AKfycby6kIkSwiTFaZt-gPODlEOFPwigQlgBO0L1ktYMjcRiwfhmFNWY8WNIB9BopLmP4jwM8Q/exec?sheet=puja&range=G1:I15')
-            .then(response => response.json())
-            .then(sheetData => {
-                const tableHeader = document.getElementById('table-header');
-                const tableBody = document.getElementById('table-body');
-
-                // Add headers to the table
-                let headers = sheetData[0];
-                headers.forEach(header => {
-                    let th = document.createElement('th');
-                    th.textContent = header;
-                    tableHeader.appendChild(th);
-                });
-
-                // Add data rows to the table
-                for (let i = 1; i < sheetData.length; i++) {
-                    let tr = document.createElement('tr');
-                    for (let j = 0; j < headers.length; j++) {
-                        let td = document.createElement('td');
-                        td.textContent = sheetData[i][j];
-                        tr.appendChild(td);
-                    }
-                    tableBody.appendChild(tr);
-                }
-            })
-            .catch(error => console.error('Error:', error));
-    });
-</script>
+  <script src="./assets/JS/paidpuja.js"></script>
 </body>
 
 </html>

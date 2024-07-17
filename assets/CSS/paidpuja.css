@@ -321,7 +321,7 @@ section{
  
   
 }
-.recordpuja{
+.paidpuja{
   margin-top: 75px;
   width: auto;
   border: none;
@@ -332,5 +332,5 @@ section{
               2px 2px 5px rgba(94,101,121,0.288);
 }
 .table-hover{
-  color: var(--text-color);
+    color: var(--text-color);
 }
