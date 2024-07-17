@@ -136,7 +136,7 @@
 
                 <h1>Sign_Up</h1>
                 <label>First Name :</label><br>
-                <input type="text" name="FullName" placeholder="Enter Full Name*" required><br>
+                <input type="text" name="FullName" placeholder="Enter First Name*" required><br>
                 <label>Last Name :</label><br>
                 <input type="text" name="LastlName" placeholder="Enter Last Name*"><br>
                 <label>E-mail :</label><br>
@@ -167,7 +167,7 @@
                 .then(response => {
                     if (response.ok) {
                         alert("Successfully Signed_Up");
-                        window.location.reload();
+                        window.location.href='index.html';
                     } else {
                         return Promise.reject(new Error('Sign_Up Failed'));
                     }

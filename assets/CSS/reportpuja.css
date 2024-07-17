@@ -315,16 +315,15 @@ section{
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
   color: var(--text-color);
   background-color: var(--body-color);
  
   
 }
-.paidpuja{
+.bdy_report{
   margin-top: 75px;
-  padding: 20px 0;
-  width: auto;
+  padding: 30px;
+  width: 320px;
   border: none;
   color: var(--text-color);
   background-color: var(--body-color);
@@ -332,6 +331,50 @@ section{
   box-shadow: -3px -3px 7px #ffffff73,
               2px 2px 5px rgba(94,101,121,0.288);
 }
-.table-hover{
-    color: var(--text-color);
+.bdy_report h3{
+  padding-bottom: 20px;
+}
+.bdy_report label{
+  font-size: 18px;
+  font-weight: 500;
+  padding: 20px 0 5px 0;
+}
+.bdy_report input, textarea{
+  width: 100%;
+  padding-left: 8px;
+  min-height: 35px;
+  color: var(--text-color);
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--body-color);
+  box-shadow: var(--box-shadow);
+}
+.bdy_report input:focus{
+  color: var(--hover-txt-color);
+  box-shadow: var(--box-inset-shadow);
+}
+.bdy_report textarea:focus{
+  color: var(--hover-txt-color);
+  box-shadow: var(--box-inset-shadow);
+}
+.btn{
+  width: 100%;
+  margin-top: 20px;
+  
+}
+.btn input{
+  width: 50%;
+  padding: 0;
+  float: right;
+  font-size: 20px;
+  font-weight: 600;
+}
+.btn input:hover{
+  color: var(--hover-txt-color);
+}
+.btn input:focus{
+  color: var(--hover-txt-color);
+  box-shadow: var(--box-inset-shadow);
 }

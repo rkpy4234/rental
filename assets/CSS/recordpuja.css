@@ -323,6 +323,7 @@ section{
 }
 .recordpuja{
   margin-top: 75px;
+  padding: 20px 0;
   width: auto;
   border: none;
   color: var(--text-color);
