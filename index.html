@@ -22,7 +22,7 @@
 
         <div class="contant">
             <form id="loginForm"
-                action="https://script.google.com/macros/s/AKfycbw4YbOdMEm4iS8UbcfZ6N4fbvkZPhqgFHSgs3MGwcvxR_DKxEcwq1kNFYz9_V6VI1dNpw/exec"
+                action="https://script.google.com/macros/s/AKfycbwwzp4S8TpzbS0cTuK-S1b0zo6eK8Ea__GHrBwG7IFdXVdcL5wlgOcZGYD8M9ebrTp6zg/exec"
                 method="post">
                 <div class="text">
                     <h1>Login</h1>
@@ -32,7 +32,7 @@
                         class="bi bi-person-fill" viewBox="0 0 16 16">
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
                     </svg>
-                    <input type="text" id="username" name="username" placeholder="Username">
+                    <input type="email" id="username" name="username" placeholder="Username">
                     <br><br>
                 </div>
                 <div class="fielder">
@@ -58,7 +58,7 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
+         document.getElementById('loginForm').addEventListener('submit', function (e) {
             e.preventDefault();
             var form = e.target;
 
@@ -73,26 +73,18 @@
                     if (result.status === 'user') {
                         alert('Login Successful');
                         localStorage.setItem('fullName', result.name);
-                        window.location.href = "user.html";
-                    } else if(result.status === 'usered'){
-                        alert('Welcome Puja');
-                        localStorage.setItem('fullName', result.name);
-                        window.location.href = "puja.html";
-                    }
-                    else if (result.status === 'pending') {
+                        window.location.href = result.page; // Redirect to user-specific page
+                    } else if (result.status === 'pending') {
                         alert('Status Pending! Wait for verification');
-                        window.location.href = "index.html";
-                    } else if (result.status === 'admin') {
-                        alert('Logged in as Admin');
-                        localStorage.setItem('fullName', result.name);
-                        window.location.href = "admin.html";
-                    } else {
+                        window.location.reload();
+                    }else {
                         alert('Invalid Username and Password');
-                        window.location.href = "index.html";
+                        window.location.href = "#";
                     }
                 })
                 .catch(error => console.error('Error:', error));
         });
+
     </script>
 
 </body>
